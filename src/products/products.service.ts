@@ -40,13 +40,9 @@ export class ProductsService {
       throw new NotFoundException(`Product with id ${id} not found`);
     }
 
-    const updatedProduct = { ...productToUpdate, ...updateProductDto };
+    productToUpdate.updateWith(updateProductDto);
 
-    this.products = this.products.map((product) =>
-      product.id === id ? updatedProduct : product,
-    );
-
-    return updatedProduct;
+    return productToUpdate;
   }
 
   remove(id: string) {
