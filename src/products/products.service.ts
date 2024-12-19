@@ -18,15 +18,17 @@ export class ProductsService {
   }
 
   findAll() {
-    return `This action returns all products`;
+    const products = this.products;
+
+    return products;
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return `This action returns a #${id} product`;
   }
 
   update(id: number, updateProductDto: UpdateProductDto) {
-    return `This action updates a #${id} product`;
+    return `This action updates a #${id} product with ${updateProductDto}`;
   }
 
   remove(id: number) {
