@@ -37,7 +37,15 @@ export class ProductsService {
     return `This action updates a #${id} product with ${updateProductDto}`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} product`;
+  remove(id: string) {
+    const productToDelete = this.findOne(id);
+
+    if (!productToDelete) {
+      throw new NotFoundException(`Product with id ${id} not found`);
+    }
+
+    this.products = this.products.filter((product) => product.id != id);
+
+    return productToDelete;
   }
 }
